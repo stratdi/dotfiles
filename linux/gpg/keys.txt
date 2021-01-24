@@ -1,0 +1,4 @@
+## AdoptOpenJDK
+https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public
+## VSCode
+https://packages.microsoft.com/keys/microsoft.asc

@@ -1,0 +1,45 @@
+sudo apt update -y
+echo "System updated!"
+
+# Global Environment Variables
+sudo sh ~/.dotfiles/linux/sys/env.sh
+
+# System tools
+sudo apt install -qq "$(cat linux/sys/apps.txt | grep "^[^#;]")"
+
+# GPG Keys
+echo "> Adding GPG keys..."
+for key in $(cat linux/gpg/keys.txt | grep "^[^#;]"); do wget -qO- "$key" | sudo apt-key add -; done;
+echo "> GPG keys added!"
+
+# Repositories
+echo "> Adding repositories..."
+sudo add-apt-repository --yes "$(cat linux/repositories/apps.txt | grep "^[^#;]")"
+echo "> Repositories added!"
+
+# Apps
+echo "> Installing apps..."
+sudo apt update
+## Development tools
+### JDK 11
+sudo apt install -qq adoptopenjdk-11-hotspot
+echo "\t> AdoptOpenJDK 11 installed"
+### VSCode
+sudo apt install -qq code
+echo "\t> VSCode installed"
+## Multimedia
+### Spotify
+sudo snap install spotify
+echo "\t> Spotify installed"
+echo "> Apps installed!"
+
+# Symlinks
+echo "> Creating symlinks..."
+sudo sh ~/.dotfiles/linux/sys/symlinks.sh
+echo "> Symlinks created!"
+
+# User functions
+echo "> Adding Functions..."
+cat ~/.dotfiles/linux/sys/functions.txt >> ~/.bashrc
+source ~/.bashrc
+echo "> Functions added!"

@@ -1,0 +1,11 @@
+# Spring Application Manager
+spring-app() {
+	bash /usr/local/bin/dev/spring-app.sh "$@"
+}
+export -f spring-app
+
+# Colored output with echo
+cecho() {
+	echo -e "$1"
+}
+export -f cecho
