@@ -1,7 +1,6 @@
 #!/bin/bash
 ## IMPORTANT: Uses colors defined in /etc/environment!!
 
-SPRING_APPS_PATH=/home/cruzl/Apps
 SPRING_APP_PATH=$SPRING_APPS_PATH/$2
 JAVA_FILE=$SPRING_APP_PATH/$2.war
 PROPERTIES_FILE=$SPRING_APP_PATH/application.properties
